@@ -22,6 +22,10 @@ function CreateNote(props) {
         event.preventDefault();
         props.onAdd(note);
 
+        setNote({
+            title:"",
+            content:""
+        });
     }
 
     return (
