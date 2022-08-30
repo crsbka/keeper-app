@@ -69,7 +69,7 @@ footer p {
     font-size: 1.5em;
 }
 
-form {
+form.create-note {
     position: relative;
     width: 480px;
     margin: 30px auto 20px auto;
@@ -77,9 +77,10 @@ form {
     padding: 15px;
     border-radius: 7px;
     box-shadow: 0 1px 5px rgb(138, 137, 137);
+
 }
-form input,
-form textarea {
+form.create-note input,
+form.create-note textarea {
     width: 100%;
     border: none;
     padding: 4px;
@@ -88,7 +89,7 @@ form textarea {
     font-family: inherit;
     resize: none;
 }
-form button {
+form.create-note button {
     position: absolute;
     right: -18px;
     bottom: -18px;
@@ -96,10 +97,14 @@ form button {
     color: #fff;
     border: none;
     border-radius: 50%;
-    width: 45px;
-    height: 45px;
+    width: 46px;
+    height: 46px;
     box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
     cursor: pointer;
     outline: none;
-    font-size: 1.5em;
+
+}
+
+form.create-note button:hover {
+    background-color: #aeb2ae;
 }

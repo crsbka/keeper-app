@@ -1,6 +1,11 @@
 import React, {useState} from "react";
+import AddToPhotosIcon from '@mui/icons-material/AddToPhotos';
+import Fab from '@mui/material/Fab';
+import Zoom from '@mui/material/Zoom';
 
 function CreateNote(props) {
+
+    const [isExpanded, setExpanded] = useState(false)
 
     const [note, setNote] = useState({
         title: "",
@@ -18,35 +23,54 @@ function CreateNote(props) {
         });
     }
 
-    function submitNote(event){
+    function submitNote(event) {
         event.preventDefault();
         props.onAdd(note);
 
         setNote({
-            title:"",
-            content:""
+            title: "",
+            content: ""
         });
+    }
+
+    function expand() {
+        setExpanded(true)
     }
 
     return (
         <div>
-            <form>
-                <input name="title"
-                       placeholder="Title"
-                       onChange={handleChange}
-                       value={note.title}
-                />
+
+            <form className="create-note">
+
+                {isExpanded && (
+                    <input name="title"
+                           placeholder="Title"
+                           onChange={handleChange}
+                           value={note.title}
+                    />
+                )}
+
                 <textarea
                     name="content"
                     placeholder="Take a note..."
-                    rows="3"
+                    rows={isExpanded ? 3 : 1}
                     onChange={handleChange}
                     value={note.content}
+                    onClick={expand}
                 />
-                <button onClick={submitNote}>+</button>
+
+
+                <Zoom in={isExpanded}>
+                    <Fab onClick={submitNote}>
+                        <AddToPhotosIcon/>
+                    </Fab>
+                </Zoom>
+
+
             </form>
         </div>
-    );
+    )
+        ;
 }
 
 export default CreateNote;
